@@ -2,6 +2,7 @@ package com.SpringBoot.restfulwebservices.service;
 
 import com.SpringBoot.restfulwebservices.dto.UserDto;
 import com.SpringBoot.restfulwebservices.entity.User;
+import com.SpringBoot.restfulwebservices.exception.EmailAlreadyExistsException;
 import com.SpringBoot.restfulwebservices.exception.ResourceNotFoundException;
 import com.SpringBoot.restfulwebservices.mapper.AutoUserMapper;
 import com.SpringBoot.restfulwebservices.mapper.UserMapper;
@@ -29,6 +30,13 @@ public class UserServiceImpl implements UserService{
 //        User user= UserMapper.mapToUser(userDto);
 
 //        User user= modelMapper.map(userDto,User.class);
+
+        Optional<User> optionalUser=userRepository.findByEmail(userDto.getEmail());
+
+        if(optionalUser.isPresent()){
+            throw  new EmailAlreadyExistsException("Email Already Exists for User ");
+
+        }
 
         User user= AutoUserMapper.MAPPER.mapToUser(userDto);
 
