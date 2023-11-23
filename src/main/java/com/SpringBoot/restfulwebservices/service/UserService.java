@@ -1,11 +1,12 @@
 package com.SpringBoot.restfulwebservices.service;
 
+import com.SpringBoot.restfulwebservices.dto.UserDto;
 import com.SpringBoot.restfulwebservices.entity.User;
 
 import java.util.List;
 
 public interface UserService {
-    User createUser(User user);
+    UserDto createUser(UserDto user);
 
     User getUserById(Long userId);
 

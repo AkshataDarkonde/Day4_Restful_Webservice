@@ -1,5 +1,6 @@
 package com.SpringBoot.restfulwebservices.controller;
 
+import com.SpringBoot.restfulwebservices.dto.UserDto;
 import com.SpringBoot.restfulwebservices.entity.User;
 import com.SpringBoot.restfulwebservices.service.UserService;
 import lombok.AllArgsConstructor;
@@ -16,8 +17,8 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user){
-        User savedUser=userService.createUser(user);
+    public ResponseEntity<UserDto> createUser(@RequestBody UserDto user){
+        UserDto savedUser=userService.createUser(user);
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
 
