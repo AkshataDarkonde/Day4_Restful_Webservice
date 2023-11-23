@@ -4,6 +4,8 @@ import com.SpringBoot.restfulwebservices.dto.UserDto;
 import com.SpringBoot.restfulwebservices.entity.User;
 
 public class UserMapper {
+
+//    To convert user JPA into userDto
     public  static UserDto mapToUserDto(User user){
         UserDto userDto= new UserDto(
                 user.getId(),
@@ -14,6 +16,7 @@ public class UserMapper {
         return userDto;
     }
 
+//    To convert UserDto into user JPA entity
     public static User mapToUser(UserDto userDto){
         User user = new User(
                 userDto.getId(),
